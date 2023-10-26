@@ -1,10 +1,5 @@
 "use strict";
 
-// Exemplo de requisição get com parâmetro.
-fetch("https://dummyjson.com/users/search?q=John")
-  .then((res) => res.json())
-  .then(console.log);
-
 // Exemplo de requisição put para editar o sobrenome do usuário com ID 1.
 fetch("https://dummyjson.com/users/1", {
   method: "PUT",
@@ -22,3 +17,19 @@ fetch("https://dummyjson.com/users/1", {
 })
   .then((res) => res.json())
   .then(console.log);
+
+function searchUser(){
+  fetch(`https://dummyjson.com/users/search?q=${query}`)
+  .then((res)=>{
+    console.log(`status code:${res.status}`)
+    if(!res.ok){
+      return console.log(`error! status code:${res.status}`)
+    }else{
+      return console.log(res.json())
+    }
+  }) 
+}
+
+
+
+
