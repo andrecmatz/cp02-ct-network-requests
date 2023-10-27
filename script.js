@@ -78,28 +78,23 @@ function updateUser() {
 		});
 }
 
-
-	function deleteUsers(){
-
-		fetch('https://dummyjson.com/users/1', {
-			method: 'DELETE',
+function deleteUsers() {
+	fetch('https://dummyjson.com/users/1', {
+		method: 'DELETE',
+	})
+		.then((res) => {
+			console.log(`Status Code: ${res.status}`);
+			if (!res.ok) {
+				return console.log(`HTTP error! Status Code: ${res.status}`);
+			} else {
+				return res.json();
+			}
 		})
-			.then((res) => {
-				console.log(`Status Code: ${res.status}`);
-				if (!res.ok) {
-					return console.log(`HTTP error! Status Code: ${res.status}`);
-				} else {
-					return res.json();
-				}
-			})
-			.then(() => {
-				alert('User successfully deleted')
-			})
-			.catch((error) => {
-				console.error(`Erro: ${error}`);
-				alert("Failed to delete the user");
-			})
-
-	}
-
-
+		.then(() => {
+			alert('User successfully deleted');
+		})
+		.catch((error) => {
+			console.error(`Erro: ${error}`);
+			alert('Failed to delete the user');
+		});
+}
